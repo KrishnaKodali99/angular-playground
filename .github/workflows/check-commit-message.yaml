@@ -23,7 +23,7 @@ jobs:
 
       - name: Validate commit message format
         run: |
-          if [[ ! "${{ env.commit_message }}" =~ ^(Breaking|Build|Chore|Docs|Fix|New|Update|WIP):\ .+ ]]; then
+          if [[ ! "${{ env.commit_message }}" =~ ^(Breaking|Build|Chore|Docs|Fix|New|Update|WIP):\ ? ]]; then
             echo "Commit message does not follow the required format."
             exit 1
           else
