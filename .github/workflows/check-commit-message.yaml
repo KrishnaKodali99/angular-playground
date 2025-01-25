@@ -1,0 +1,31 @@
+name: Check Commit Message Format
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check_commit_message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get the latest commit message
+        id: commit_message
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "commit_message=$COMMIT_MSG" >> $GITHUB_ENV
+
+      - name: Validate commit message format
+        run: |
+          if [[ ! "${{ env.commit_message }}" =~ ^(Breaking|Build|Chore|Docs|Fix|New|Update|WIP):\ .+ ]]; then
+            echo "Commit message does not follow the required format."
+            exit 1
+          else
+            echo "Commit message is valid."
+          fi
