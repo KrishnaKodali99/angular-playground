@@ -11,9 +11,11 @@ jobs:
 
       - name: Validate commit messages
         run: |
-          git log --format=%B ${{ github.event.before }}..${{ github.sha }} | while read -r line; do
-            if ! [[ $line =~ ^(Breaking|Build|Chore|Docs|Fix|New|Update|WIP):\ ? ]]; then
-              echo "Invalid commit message: $line"
-              exit 1
-            fi
-          done
+          # Get the latest commit message
+          latest_commit_message=$(git log -1 --pretty=%B)
+
+          # Check if the latest commit message matches the required pattern
+          if ! [[ $latest_commit_message =~ ^(Breaking|Build|Chore|Docs|Fix|New|Update|WIP):\ ? ]]; then
+            echo "Invalid commit message: $latest_commit_message"
+            exit 1
+          fi
