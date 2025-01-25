@@ -15,14 +15,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get the latest commit message
+      - name: Get the latest commit message from the branch
         id: commit_message
         run: |
+          git fetch --prune --unshallow
           COMMIT_MSG=$(git log -1 --pretty=%B)
           echo "commit_message=$COMMIT_MSG" >> $GITHUB_ENV
+          echo "Commit message: $COMMIT_MSG"
 
       - name: Validate commit message format
         run: |
+          echo "Validating commit message: ${{ env.commit_message }}"
           if [[ ! "${{ env.commit_message }}" =~ ^(Breaking|Build|Chore|Docs|Fix|New|Update|WIP): ]]; then
             echo "Commit message does not follow the required format."
             exit 1
