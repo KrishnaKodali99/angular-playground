@@ -15,11 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get the latest commit message from the branch
+      - name: Get the latest commit message (excluding merges)
         id: commit_message
         run: |
           git fetch --prune --unshallow
-          COMMIT_MSG=$(git log -1 --pretty=%B)
+          COMMIT_MSG=$(git log --no-merges -1 --pretty=%B)
           echo "commit_message=$COMMIT_MSG" >> $GITHUB_ENV
           echo "Commit message: $COMMIT_MSG"
 
