@@ -1,4 +1,11 @@
-import { Component, input, Input, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  input,
+  Input,
+  Output,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,8 +13,10 @@ import { Component, input, Input, signal } from '@angular/core';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  cardHeader = input<string>("Heading")
-  @Input({required: true}) cardDetail: string = "Card Detail";
+  cardHeader = input<string>('Heading');
+  @Input({ required: true }) cardDetail: string = 'Card Detail';
+
+  @Output() select = new EventEmitter<number>();
 
   cardButtonValue = signal(0);
 
@@ -15,7 +24,11 @@ export class CardComponent {
     return `${this.cardDetail} from getter`;
   };
 
-  onClickHandler = (): void => {
-    this.cardButtonValue.set(this.cardButtonValue() + 1)
-  }
+  onClickHandler1 = (): void => {
+    this.cardButtonValue.set(this.cardButtonValue() + 1);
+  };
+
+  onClickHandler2 = (): void => {
+    this.select.emit(this.cardButtonValue());
+  };
 }

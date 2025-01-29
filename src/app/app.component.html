@@ -1,2 +1,5 @@
-<app-header/>
-<app-card cardDetail="Product Card"/>
+<main>
+  <app-header />
+  <app-card cardDetail="Product Card" (select)="onSelect($event)" />
+  <app-display [count]="displayCount" />
+</main>

@@ -1,9 +1,8 @@
 <div class="card">
-    {{cardHeader()}}
-    <div class="Card Details">
-        {{cardDetails()}}
-    </div>
-    <button (click)="onClickHandler()">
-        Count: {{cardButtonValue()}}
-    </button>
+  {{ cardHeader() }}
+  <div class="Card Details">
+    {{ cardDetails() }}
+  </div>
+  <button (click)="onClickHandler1()">Count: {{ cardButtonValue() }}</button>
+  <button (click)="onClickHandler2()">Send Count</button>
 </div>

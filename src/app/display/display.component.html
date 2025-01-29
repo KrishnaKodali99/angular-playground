@@ -1,0 +1,15 @@
+<div>
+  <p>
+    @if(count > 0) { Received Count: {{ count }}
+    } @else {
+      Count must be greate than 0
+    }
+  </p>
+  <ul id="users">
+    @for (user of users; track user.id) {
+    <li>
+      {{ user.name }}
+    </li>
+    }
+  </ul>
+</div>
