@@ -3,6 +3,8 @@
   <div class="Card Details">
     {{ cardDetails() }}
   </div>
-  <button (click)="onClickHandler1()">Count: {{ cardButtonValue() }}</button>
-  <button (click)="onClickHandler2()">Send Count</button>
+  <button class="valueButton" mat-flat-button (click)="onClickHandler1()">Count: {{ cardButtonValue() }}</button>
+  <button [class.selected]="selected" (click)="onClickHandler2()">
+    Send Count
+  </button>
 </div>

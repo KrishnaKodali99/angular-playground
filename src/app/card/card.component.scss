@@ -3,4 +3,12 @@
   flex-direction: column;
   align-items: center;
   background: lightblue;
+
+  .valueButton {
+    margin: 8px 0px;
+  }
+
+  .selected {
+    background-color: blanchedalmond;
+  }
 }
