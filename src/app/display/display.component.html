@@ -1,4 +1,7 @@
 <div>
+  @if(typeof name !== undefined && name !== '') {
+    User Name: {{name}}
+  }
   <p>
     @if(count > 0) { Received Count: {{ count }}
     } @else {

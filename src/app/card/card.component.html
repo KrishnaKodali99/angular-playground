@@ -3,8 +3,16 @@
   <div class="Card Details">
     {{ cardDetails() }}
   </div>
-  <button class="valueButton" mat-flat-button (click)="onClickHandler1()">Count: {{ cardButtonValue() }}</button>
-  <button [class.selected]="selected" (click)="onClickHandler2()">
+  <app-input id="name" name="Name" placeholder="Enter Name" type="text" (enteredValueChange)="handleNameChange($event)" />
+  <button
+    class="valueButton"
+    type="button"
+    mat-flat-button
+    (click)="onClickHandler1()"
+  >
+    Count: {{ cardButtonValue() }}
+  </button>
+  <button [class.selected]="selected" type="button" (click)="onClickHandler2()">
     Send Count
   </button>
 </div>

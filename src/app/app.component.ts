@@ -12,8 +12,11 @@ import { CardComponent } from './card';
 export class AppComponent {
   count: number = 0;
 
-  onSelect = (count: number) => {
-    this.count = count;
+  name: string = "";
+
+  onSelect = (data: any) => {
+    this.name = data?.name;
+    this.count = data?.count;
   };
 
   get displayCount() {

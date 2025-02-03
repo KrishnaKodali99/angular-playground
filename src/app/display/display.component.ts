@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './display.component.scss',
 })
 export class DisplayComponent {
+  @Input({ required: true }) name!: string;
   @Input({ required: true }) count!: number;
 
   users: any[] = [

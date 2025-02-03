@@ -1,1 +1,8 @@
-<input type="text" id="input" name="input">
+<input
+  [type]="type"
+  [id]="id"
+  name="name"
+  [placeholder]="placeholder"
+  [(ngModel)]="enteredValue"
+  (ngModelChange)="onValueChange()"
+/>
