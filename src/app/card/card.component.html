@@ -1,9 +1,17 @@
 <div class="card">
-  {{ cardHeader() }}
+  <h3>{{ cardHeader() }}</h3>
   <div class="Card Details">
-    {{ cardDetails() }}
+    <p>
+      {{ cardDetails }}
+    </p>
   </div>
-  <app-input id="name" name="Name" placeholder="Enter Name" type="text" (enteredValueChange)="handleNameChange($event)" />
+  <app-input
+    id="name"
+    name="Name"
+    placeholder="Enter Name"
+    type="text"
+    (enteredValueChange)="handleNameChange($event)"
+  />
   <button
     class="valueButton"
     type="button"

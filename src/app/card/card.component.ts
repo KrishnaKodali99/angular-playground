@@ -12,32 +12,35 @@ import { InputComponent } from '../input';
 
 @Component({
   selector: 'app-card',
+  standalone: true,
   templateUrl: './card.component.html',
   imports: [MatButtonModule, InputComponent],
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
   // Input as signals
-  cardHeader = input<string>('Heading');
+  cardHeader = input<string>('Card Heading');
 
   // Input as property
-  @Input({ required: true }) cardDetail: string = 'Card Detail';
+  @Input({ required: true }) cardDetail!: string;
 
-  @Output() select = new EventEmitter<{name: string, count: number}>();
+  @Output() select = new EventEmitter<{ name: string; count: number }>();
+
+  constructor() {}
 
   cardButtonValue = signal(0);
 
-  name: string = "";
+  name: string = '';
 
   selected: boolean = false;
 
-  cardDetails = () => {
+  get cardDetails(): string {
     return `${this.cardDetail} from getter`;
   };
 
-  handleNameChange = (name: string) => {
+  handleNameChange = (name: string): void => {
     this.name = name;
-  }
+  };
 
   onClickHandler1 = (): void => {
     this.cardButtonValue.set(this.cardButtonValue() + 1);
@@ -45,6 +48,6 @@ export class CardComponent {
 
   onClickHandler2 = (): void => {
     this.selected = true;
-    this.select.emit({name: this.name, count: this.cardButtonValue()});
+    this.select.emit({ name: this.name, count: this.cardButtonValue() });
   };
 }
