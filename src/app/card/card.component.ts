@@ -7,6 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 import { InputComponent } from '../input';
 
@@ -14,7 +15,7 @@ import { InputComponent } from '../input';
   selector: 'app-card',
   standalone: true,
   templateUrl: './card.component.html',
-  imports: [MatButtonModule, InputComponent],
+  imports: [MatButtonModule, MatCardModule, InputComponent],
   styleUrl: './card.component.scss',
 })
 export class CardComponent {

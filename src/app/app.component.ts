@@ -1,25 +1,21 @@
-import { Component } from '@angular/core';
-import { HeaderComponent } from './header';
-import { DisplayComponent } from './display';
-import { CardComponent } from './card';
+import { Component, inject } from '@angular/core';
+
+import { FormComponent } from './form/form.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserDetailsService } from './user-details/user-details.service';
+
+import type { User } from './user-details/user-details.model';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, CardComponent, DisplayComponent],
+  imports: [FormComponent, UserDetailsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  count: number = 0;
+  private userDetailsService = inject(UserDetailsService);
 
-  name: string = "";
-
-  onSelect = (data: any) => {
-    this.name = data?.name;
-    this.count = data?.count;
+  onSubmit = (userData: User) => {
+    this.userDetailsService.addUser(userData);
   };
-
-  get displayCount() {
-    return this.count;
-  }
 }

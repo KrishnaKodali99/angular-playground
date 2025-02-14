@@ -1,0 +1,11 @@
+<div class="form-container">
+  <form ngNativeValidate (ngSubmit)="onSubmit()">
+    <input id="name" type="text" placeholder="Name" name="name" [(ngModel)]="name" required />
+    <br />
+
+    <input id="email" type="email" placeholder="Email" name="email" [(ngModel)]="email" required />
+    <br />
+
+    <button type="submit">Submit</button>
+  </form>
+</div>

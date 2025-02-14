@@ -1,5 +1,2 @@
-<main>
-  <app-header />
-  <app-card cardDetail="Card" (select)="onSelect($event)" />
-  <app-display [name]="name" [count]="displayCount" />
-</main>
+<app-form (formSubmit)="onSubmit($event)" />
+<app-user-details />

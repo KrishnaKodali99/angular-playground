@@ -1,0 +1,21 @@
+<div class="user-details-container">
+  @if (userDetails.length === 0 ) {
+    <p>No user details entered. Enter details.</p>
+  }
+
+  @else {
+    <div class="user-details">
+      <h2>User Details</h2>
+      <ul>
+        @for (user of userDetails; track user.email ) {
+          <li>
+            <strong>Name:</strong> {{user.name}} <br>
+            <strong>Email:</strong> {{user.email}}
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</div>
+
+
